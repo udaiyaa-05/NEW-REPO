@@ -4,31 +4,51 @@ export default function Verify() {
 
   const { id } = useParams();
 
+  const certificates = {
+    "ABC123": "/certificates/udaiyaa.pdf",
+    "XYZ789": "/certificates/friend.pdf"
+  };
+
+  const pdf = certificates[id];
+
+  if (!pdf) {
+    return (
+      <h1 style={{
+        textAlign: "center",
+        marginTop: "100px",
+        fontFamily: "Arial"
+      }}>
+        Certificate Not Found
+      </h1>
+    );
+  }
+
   return (
     <div style={{
       height: "100vh",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      flexDirection: "column",
-      fontFamily: "Arial",
       background: "#f5f5f5"
     }}>
 
-      <div style={{
-        background: "white",
-        padding: "40px",
-        borderRadius: "10px",
-        boxShadow: "0 0 10px rgba(0,0,0,0.1)"
-      }}>
-
-        <h1>Certificate Verification</h1>
-
-        <h2>ID: {id}</h2>
-
-        <p>Status: Verified Successfully</p>
-
-      </div>
+      <a
+        href={pdf}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <button style={{
+          padding: "14px 30px",
+          fontSize: "18px",
+          border: "none",
+          borderRadius: "8px",
+          background: "#2563eb",
+          color: "white",
+          cursor: "pointer"
+        }}>
+          Course Certificate
+        </button>
+      </a>
 
     </div>
   );
